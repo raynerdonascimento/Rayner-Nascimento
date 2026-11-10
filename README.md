@@ -1,2 +1,0 @@
-# Rayner-Nascimento
-Código SQL

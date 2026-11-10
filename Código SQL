@@ -1,0 +1,58 @@
+# Rayner-Nascimento
+Código SQL
+-- Criação do banco de dados (opcional)
+CREATE DATABASE universidade;
+USE universidade;
+
+-- Tabela Disciplina
+CREATE TABLE Disciplina (
+    Id CHAR(4) NOT NULL,
+    Nome VARCHAR(20) NOT NULL,
+    CH INT NOT NULL,
+    CONSTRAINT PK_Disciplina PRIMARY KEY (Id),
+    CONSTRAINT CK_Disciplina_CH CHECK (CH IN (20, 40, 60))
+);
+
+-- Tabela Professor
+CREATE TABLE Professor (
+    Matricula CHAR(6) NOT NULL,
+    PreNome VARCHAR(25) NOT NULL,
+    SobreNome VARCHAR(50) NOT NULL,
+    Turno VARCHAR(5) NOT NULL,
+    Id_Disciplina CHAR(4) NOT NULL,
+    CONSTRAINT PK_Professor PRIMARY KEY (Matricula),
+    CONSTRAINT FK_Professor_Disciplina FOREIGN KEY (Id_Disciplina) 
+        REFERENCES Disciplina(Id)
+        ON UPDATE CASCADE 
+        ON DELETE RESTRICT,
+    CONSTRAINT CK_Professor_Turno CHECK (LOWER(Turno) IN ('manhã', 'manha', 'tarde', 'noite'))
+);
+
+-- Tabela Aluno
+CREATE TABLE Aluno (
+    RA CHAR(10) NOT NULL,
+    PreNome VARCHAR(25) NOT NULL,
+    SobreNome VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_Aluno PRIMARY KEY (RA)
+);
+
+-- Tabela Avaliar (Relacionamento N:M com notas)
+CREATE TABLE Avaliar (
+    RA_Aluno CHAR(10) NOT NULL,
+    Id_Disciplina CHAR(4) NOT NULL,
+    NP1 DECIMAL(4, 2),
+    NP2 DECIMAL(4, 2),
+    NP3 DECIMAL(4, 2),
+    CONSTRAINT PK_Avaliar PRIMARY KEY (RA_Aluno, Id_Disciplina),
+    CONSTRAINT FK_Avaliar_Aluno FOREIGN KEY (RA_Aluno) 
+        REFERENCES Aluno(RA)
+        ON UPDATE CASCADE 
+        ON DELETE RESTRICT,
+    CONSTRAINT FK_Avaliar_Disciplina FOREIGN KEY (Id_Disciplina) 
+        REFERENCES Disciplina(Id)
+        ON UPDATE CASCADE 
+        ON DELETE RESTRICT,
+    CONSTRAINT CK_Avaliar_NP1 CHECK (NP1 BETWEEN 0.00 AND 10.00),
+    CONSTRAINT CK_Avaliar_NP2 CHECK (NP2 BETWEEN 0.00 AND 10.00),
+    CONSTRAINT CK_Avaliar_NP3 CHECK (NP3 BETWEEN 0.00 AND 10.00)
+);
