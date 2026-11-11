@@ -1,0 +1,46 @@
+projeto-web/
+├── css/
+│   └── style.css          # Estilização visual (CSS3)
+├── js/
+│   └── script.js          # Interatividade e validações (JavaScript)
+├── assets/                # Imagens e ícones
+├── index.html             # Página principal (HTML5)
+└── README.md              # Documentação para o GitHub
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Web</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <h1>Nome do Sistema</h1>
+    <nav>
+      <ul>
+        <li><a href="#cadastro">Registo</a></li>
+        <li><a href="#consulta">Consulta</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main>
+    <section id="cadastro">
+      <h2>Novo Registo</h2>
+      <form action="#" method="POST">
+        <!-- Sempre associar <label> ao <input> com id/for por acessibilidade -->
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <button type="submit">Guardar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
