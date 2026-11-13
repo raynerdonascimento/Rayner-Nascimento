@@ -1,0 +1,15 @@
+nome-do-repositorio/
+│
+├── src/                        # Código-fonte do sistema
+│   └── main.py                 # Arquivo principal (ou dividido em módulos, se preferir)
+│
+├── docs/                       # Materiais visuais e apresentação
+│   ├── fluxograma.png          # Diagrama de etapas e decisões (feito no Miro, Lucidchart ou Draw.io)
+│   └── apresentacao.pdf        # Slides exportados (Canva, PowerPoint, etc.)
+│
+├── prints/                     # Capturas de tela do sistema rodando
+│   ├── 01_menu_principal.png
+│   ├── 02_cadastro.png
+│   └── 03_relatorio.png
+│
+└── README.md                   # Documentação obrigatória do projeto
